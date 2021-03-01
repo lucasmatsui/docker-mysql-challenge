@@ -2,6 +2,10 @@ FROM node:15.10.0-alpine
 
 WORKDIR /usr/src/app
 
+COPY ./package.json /usr/src/app
+
+RUN npm install
+
 RUN apk add --no-cache openssl
 
 ENV DOCKERIZE_VERSION v0.6.1

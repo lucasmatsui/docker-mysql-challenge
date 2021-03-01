@@ -14,12 +14,7 @@ Suba tudo em um repositório e faça a entrega.
 
 #### ⚙️ Para utilizar
 
-Entrar na pasta node/ e rodar:
-
-```
-$ npm install
-```
-
+Apenas rodar:
 ```
 $ docker-compose up -d
 ```

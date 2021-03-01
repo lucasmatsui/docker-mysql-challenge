@@ -15,14 +15,22 @@ const connection = mysql.createConnection(config)
 
 connection.query("INSERT INTO people (name) VALUES ('Kenzo')")
 
-let products = [];
+let getUserList = function () {
+    return new Promise(function (resolve, reject) {
+        connection.query('SELECT * FROM people', function (err, result, field) {
+            if (err) {
+                console.log("ERROR 3")
+                reject(err)
+            } else {
+                resolve(result)
+            }
+        });
+    });
+};
 
 app.get('/', async (req, res) => {
-    let html = "<h1>Full Cycle Rocks!</h1>";
-    connection.query("SELECT * FROM people", function (error, results) {
-        if (error) throw error
-        products = results
-    });
+    let html = "<h1>Full Cycle Rocks!</h1>"
+    let products = await getUserList()
 
     html += "<ul>"
     products.map(product => {
